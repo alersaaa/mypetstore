@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.csu.mypetstorebyssm.persistence.UserMapper">
+    <select id="findUserByUsername" parameterType="string" resultType="User">
+        SELECT
+           *
+        FROM USER
+        WHERE USERNAME = #{username}
+    </select>
+    <update id="updateUserByUsername" parameterType="User">
+        UPDATE USER SET
+            PASSWORD=#{password},
+            FIRSTNAME=#{firstname},
+            LASTNAME=#{lastname},
+            EMAIL=#{email},
+            PHONE=#{phone},
+            ADDRESS1=#{address1},
+            ADDRESS2=#{address2},
+            CITY=#{city},
+            STATE=#{state},
+            ZIP=#{zip},
+            COUNTRY=#{country},
+            LANGUAGEPRE=#{languagepre},
+            FAVORITECATA=#{favoritecata},
+            IFLIST=#{iflist},
+            IFBANNER=#{ifbanner}
+        WHERE USERNAME=#{username}
+    </update>
+    <select id="findUserByUsernameAndPassword" parameterType="User" resultType="User">
+        SELECT
+            *
+        FROM USER
+        WHERE USERNAME=#{username} AND PASSWORD=#{password}
+    </select>
+    <insert id="insertUserByUsernameAndPassword" parameterType="User">
+        INSERT INTO USER(USERNAME, PASSWORD)
+        VALUES(#{username}, #{password})
+    </insert>
+</mapper>

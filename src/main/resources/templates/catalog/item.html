@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="StyleSheet" href="../css/jpetstore.css" type="text/css" media="screen"/>
+</head>
+<body>
+<div th:replace="common/top">
+</div>
+
+<div id="content">
+    <div id="BackLink">
+        <a th:href="@{/catalog/viewProduct(productId=${product.productId})}" th:text="'Return to' + ${product.productId}">
+        </a>
+    </div>
+
+    <div id="Catalog">
+        <table>
+            <tr>
+                <td>
+                    <img th:src="@{${product.description}}">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b th:text="${item.itemId}">itemId</b>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b><font size="4">
+                        <p th:text="${item.attribute1}+${item.attribute2}+${item.attribute3}+${item.attribute4}+${item.attribute5}"></p>
+                    </font></b>
+                </td>
+            </tr>
+            <tr>
+                <td th:text="${product.name}">product name</td>
+            </tr>
+            <tr>
+                <td th:text="${quantity<=0}? 'Back ordered' : ${quantity}+' in stock'">
+                </td>
+            </tr>
+            <tr>
+                <td th:text="${T(org.csu.mypetstorebyssm.util.FormatUtil).valueFormat(item.listPrice)}">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a class="Button" th:href="@{/cart/addItem(workingItemId=${item.itemId})}">Add to Cart</a>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+<</div>
+
+<div th:replace="common/bottom">
+</div>
+</div>
+</body>
+</html>

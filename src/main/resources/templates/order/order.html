@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="StyleSheet" href="../css/jpetstore.css" type="text/css" media="screen"/>
+</head>
+<body>
+<div th:replace="common/top">
+</div>
+<div id="content">
+    <div id="Catalog">
+
+        <form action="/orders/confirmOrder" method="post">
+
+            <table>
+                <tr>
+                    <th colspan=2>Payment Details</th>
+                </tr>
+                <tr>
+                    <td>Card Type:</td>
+                    <td>
+                        <select name="cardType" th:each="cardType:${session.creditCardTypes}">
+                                <option th:value="${cardType}" th:text="${cardType}">
+                                </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Card Number:</td>
+                    <td>
+                        <input type="text" name="creditCard" th:value="${session.order.creditCard}">
+                        * Use a fake number!
+                    </td>
+                </tr>
+                <tr>
+                    <td>Expiry Date (MM/YYYY):</td>
+                    <td>
+                        <input type="text" name="expiryDate" th:value="${session.order.expiryDate}">
+                    </td>
+                </tr>
+                <tr>
+                    <th colspan=2>Billing Address</th>
+                </tr>
+
+                <tr>
+                    <td>First name:</td>
+                    <td>
+                        <input type="text" name="firstName" th:value="${session.order.billToFirstName}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Last name:</td>
+                    <td>
+                        <input type="text" name="lastName" th:value="${session.order.billToLastName}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Address 1:</td>
+                    <td>
+                        <input type="text" name="address1" th:value="${session.order.billAddress1}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Address 2:</td>
+                    <td>
+                        <input type="text" name="address2" th:value="${session.order.billAddress2}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>City:</td>
+                    <td>
+                        <input type="text" name="city" th:value="${session.order.billCity}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>State:</td>
+                    <td>
+                        <input type="text" name="state" th:value="${session.order.billState}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Zip:</td>
+                    <td>
+                        <input type="text" name="zip" th:value="${session.order.billZip}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Country:</td>
+                    <td>
+                        <input type="text" name="country" th:value="${session.order.billCountry}">
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <th colspan=2>Shipping Address</th>
+                </tr>
+                <tr>
+                    <td>First name:</td>
+                    <td><input type="text" name="shipToFirstName" th:value="${session.order.shipToFirstName}"/></td>
+                </tr>
+                <tr>
+                    <td>Last name:</td>
+                    <td><input type="text" name="shipToLastName" th:value="${session.order.shipToLastName}"/></td>
+                </tr>
+                <tr>
+                    <td>Address 1:</td>
+                    <td><input type="text" size="40" name="shipAddress1" th:value="${session.order.shipAddress1}"/></td>
+                </tr>
+                <tr>
+                    <td>Address 2:</td>
+                    <td><input type="text" size="40" name="shipAddress2" th:value="${session.order.shipAddress2}"/></td>
+                </tr>
+                <tr>
+                    <td>City:</td>
+                    <td><input type="text" name="shipCity" th:value="${session.order.shipCity}"/></td>
+                </tr>
+                <tr>
+                    <td>State:</td>
+                    <td><input type="text" size="4" name="shipState" th:value="${session.order.shipState}"/></td>
+                </tr>
+                <tr>
+                    <td>Zip:</td>
+                    <td><input type="text" size="10" name="shipZip" th:value="${session.order.shipZip}"/></td>
+                </tr>
+                <tr>
+                    <td>Country:</td>
+                    <td><input type="text" size="15" name="shipCountry" th:value="${session.order.shipCountry}"/></td>
+                </tr>
+
+
+                <tr>
+                    <td colspan=2>
+                        <input type="checkbox" name="shippingAddressRequired" value="shippingAddressRequired">
+                        Ship to different address...
+                    </td>
+                </tr>
+
+            </table>
+
+            <input type="submit" value="Continue">
+
+        </form>
+    </div>
+</div>
+</div>
+<div th:replace="common/bottom">
+</div>
+</body>
+</html>

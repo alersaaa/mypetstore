@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.csu.mypetstorebyssm.persistence.CartMapper">
+<update id="updateCartItemByUsernameAndItemId" parameterType="CartItem">
+    UPDATE CART SET
+        QUANTITY=#{quantity},
+        TOTALCOST=#{totalcost}
+    WHERE
+        USERNAME=#{username} AND ITEMID=#{itemId}
+</update>
+    <select id="selectCartItemByUsernameAndItemId" parameterType="CartItem" resultType="CartItem">
+        SELECT
+           *
+        FROM CART
+        WHERE USERNAME=#{username} AND ITEMID=#{itemId}
+    </select>
+    <insert id="insertCartItemByUsernameAndItemId" parameterType="CartItem">
+        INSERT INTO CART(USERNAME, ITEMID, INSTOCK, QUANTITY, TOTALCOST, PAY)
+        VALUES(#{username}, #{itemId}, #{inStock}, #{quantity}, #{totalcost}, #{pay})
+    </insert>
+    <select id="selectCartItemByUsername" parameterType="string" resultType="CartItem">
+        SELECT
+            *
+        FROM CART
+        WHERE USERNAME=#{username}
+    </select>
+    <delete id="removeCartItemByUsernameAndItemId" parameterType="CartItem">
+        DELETE
+        FROM CART
+        WHERE USERNAME=#{username} AND ITEMID=#{itemId}
+    </delete>
+    <update id="updateCartItemByItemIdAndPay" parameterType="CartItem">
+        UPDATE CART SET
+            PAY=#{pay}
+        WHERE USERNAME=#{username} AND ITEMID=#{itemId}
+    </update>
+</mapper>

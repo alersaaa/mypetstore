@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="StyleSheet" href="../css/jpetstore.css" type="text/css" media="screen"/>
+</head>
+<body>
+<div th:replace="common/top">
+</div>
+<div id="content">
+    <div id="BackLink">
+        <a href="/catalog/view">Return to Main Menu</a>
+    </div>
+
+    <h1 align="center">User Information</h1>
+    <form action="saveAccount" method="post">
+        <table>
+            <tr>
+                <td>
+                    Username:
+                </td>
+                <td>
+                    <input type="text" name="username" id="username" th:value="${session.user.username}">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    New Password:
+                </td>
+                <td>
+                    <input type="password" name="password" id="password" th:value="${session.user.password}">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Repeat Password:
+                </td>
+                <td>
+                    <input type="password" name="repeatpwd" id="repeatpwd" th:value="${session.user.password}">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h1 align="center">Account Information</h1>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    First Name:
+                </td>
+                <td>
+                    <input type="text" name="firstname" id="firstname" th:value="${session.user.firstname}">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Last Name:
+                </td>
+                <td>
+                    <input type="text" name="lastname" id="lastname" th:value="${session.user.lastname}">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Email:
+                </td>
+                <td>
+                    <input type="email" name="email" id="email" th:value="${session.user.email}">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Phone:
+                </td>
+                <td>
+                    <input type="text" name="phone" id="phone" th:value="${session.user.phone}">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Address1:
+                </td>
+                <td>
+                    <input type="text" name="address1" id="address1" th:value="${session.user.address1}">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Address2:
+                </td>
+                <td>
+                    <input type="text" name="address2" id="address2" th:value="${session.user.address2}">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    City:
+                </td>
+                <td>
+                    <input type="text" name="city" id="city" th:value="${session.user.city}">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Stste:
+                </td>
+                <td>
+                    <input type="text" name="state" id="state" th:value="${session.user.state}">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Zip:
+                </td>
+                <td>
+                    <input type="text" name="zip" id="zip" th:value="${session.user.zip}">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Country:
+                </td>
+                <td>
+                    <input type="text" name="country" id="country" th:value="${session.user.country}">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h1 align="center">Profile Information</h1>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Language Preference:
+                </td>
+                <td>
+                    <select name="languagePreference">
+                        <option th:selected="${session.user.languagepre eq 'English'}" value="English" >English
+                        </option>
+                        <option th:selected="${session.user.languagepre eq 'Janpenese'}" value="Janpenese">Janpenese
+                        </option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Favorite Catagory:
+                </td>
+                <td>
+                    <select name="favoriteCatagoryId">
+                        <option th:selected="${session.user.favoritecata=='FISH'}" value="FISH">
+                            FISH
+                        </option>
+                        <option th:selected="${session.user.favoritecata=='DOG'}" value="DOG">
+                            DOG
+                        </option>
+                        <option th:selected="${session.user.favoritecata=='REPTILES'}" value="REPTILES">
+                            REPTILES
+                        </option>
+                        <option th:selected="${session.user.favoritecata=='CATS'}" value="CATS">
+                            CATS
+                        </option>
+                        <option th:selected="${session.user.favoritecata=='BIRDS'}" value="BIRDS">
+                            BIRDS
+                        </option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Enable MyList:
+                </td>
+                <td>
+                    <input name="listOption" value="1" type="radio" th:checked="${session.user.iflist=='1'}">
+                    <input name="listOption" value="0" type="radio" th:checked="${session.user.iflist!='1'}">
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    Enable MyBanner:
+                </td>
+                <td>
+                    <input name="bannerOption" value="1" type="radio" th:checked="${session.user.ifbanner=='1'}">
+                    <input name="bannerOption" value="0" type="radio" th:checked="${session.user.ifbanner!='1'}">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input name="editAccount" type="submit" value="Save Account Information">
+                </td>
+            </tr>
+        </table>
+    </form>
+    <font color="red" th:text="${message}"></font>
+</div>
+<div th:replace="common/bottom">
+</div>
+</body>
+</html>
